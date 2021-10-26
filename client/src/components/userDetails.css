@@ -1,0 +1,26 @@
+.userDetails-main {
+    width:  70%;
+    margin: 1rem 0 0 1rem;
+    position: relative;
+}
+
+.user-info {
+    position: absolute;
+    left: 10%;
+    width: 17rem;
+}
+
+.user-courses {
+    position: absolute;
+    left: 55%;
+    width: 17rem;
+}
+
+.user-courses ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.user-courses ul li {
+    font-size: 18px;
+}

@@ -1,0 +1,12 @@
+.courseDetails-main {
+    width:  70%;
+    margin: 1rem 0 0 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.completionTime, .fastestTime {
+    width: 20rem;
+    height: 10rem;
+}
