@@ -34,7 +34,7 @@ def get_user_courses(id):
     """
     returns
     0: all courses of a certain user
-    1: array of number courses per month - each index corresponds to a month
+    1: list of the number of courses started per month - every index corresponds to a month
     """
     user_courses_ids = []
     year_count = [0] * 12
@@ -50,11 +50,11 @@ def get_user_courses(id):
 @app.route('/course/<id>')
 def get_course_data(id):
     """
-    returns list of:
+    returns a list of:
     0: average completion time of the course
     1: user who completed it faster
     2: fastest completion time
-    3: array of number users per month - each index corresponds to a month
+    3: list of the number users per month - each index corresponds to a month
     """
     no_of_courses = 0
     total_time = timedelta(seconds=0)
@@ -80,7 +80,6 @@ def get_stats():
     """
     returns the number of users who completed the course
     in a given time-frame defined by (start, end) arguments
-    ....
     """
     start = request.args.get("start")
     end = request.args.get("end")

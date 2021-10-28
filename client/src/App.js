@@ -61,7 +61,7 @@ function App() {
 			)}
 			{tab === 2 && (
 				<div className="main-container">
-					<Navigation dataType="courses" data={courses} selectedItem={userDetails.listIndex} onItemClick={fetchDetails}/>
+					<Navigation dataType="courses" data={courses} selectedItem={courseDetails.listIndex} onItemClick={fetchDetails}/>
 					{courseDetails.data && <CourseDetails course={courseDetails.data}/>}
 				</div>
 			)}

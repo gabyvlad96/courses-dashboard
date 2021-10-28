@@ -22,20 +22,19 @@ function Stats() {
         participants: null,
     });
 
-    useEffect(async () => {
+    useEffect(() => {
         fetchCoursesByLength();
         fetchCoursesByPopularity();
-        fetchNbOfUsersTimeInterval();
+        fetchNbOfUsersInTimeInterval();
     }, []);
 
-    const fetchNbOfUsersTimeInterval = async () => {
+    const fetchNbOfUsersInTimeInterval = async () => {
         try {
             const response = await fetch(`${baseUrl}/stats/timeCompletion?start=${timeInterval[0]}:00:00&end=${
                 timeInterval[1] === 24 ? '23:59:00' : `${timeInterval[1]}:00:00`}`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const noOfUsers = await response.json()
             setNoOfUsers(noOfUsers);
-            console.log(noOfUsers);
 		} catch (error) {
 			console.log(error);
 		}
@@ -50,7 +49,6 @@ function Stats() {
                 a.push(course.title);
                 b.push(Math.floor(length / 24))
                 return [a, b]}, [[],[]]);
-            console.log(lengthOfCourses);
             setCoursesLength({
                 courses: coursesByLength,
                 length: lengthOfCourses,
@@ -67,10 +65,8 @@ function Stats() {
             const coursesData = await response.json()
             const [coursesByPolpularity, participants] = coursesData.reduce(([a, b], {course, participants}) => {
                 a.push(course.title);
-                console.log(participants)
-                b.push(participants)
+                b.push(participants);
                 return [a, b]}, [[],[]]);
-            console.log(participants)
             setCoursesPolpularity({
                 courses: coursesByPolpularity,
                 participants,
@@ -80,13 +76,12 @@ function Stats() {
 		}
     }
 
-    const handleChange = async (event, newValue) => {
+    const handleChange = (_, newValue) => {
         setTimeInterval(newValue);
     };
 
-    const submitChange = async (event, newValue) => {
-        console.log(newValue);
-        fetchNbOfUsersTimeInterval();
+    const submitChange = () => {
+        fetchNbOfUsersInTimeInterval();
     }
 
     return (
