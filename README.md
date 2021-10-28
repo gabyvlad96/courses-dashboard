@@ -12,7 +12,7 @@ If you want to run it locally you need to start the server and the web client se
 Start the server from the `/server` directory:
 
 ```
- python3 -m flask run
+python3 -m flask run
  ```
 
  Or start it with Docker:
