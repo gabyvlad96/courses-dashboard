@@ -1,19 +1,24 @@
 .userDetails-main {
     width:  70%;
     margin: 1rem 0 0 1rem;
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .user-info {
-    position: absolute;
-    left: 10%;
     width: 17rem;
+    height: 13rem;
+}
+
+.user-info h4 {
+    font-weight: 400;
+    margin-bottom: 2rem;
 }
 
 .user-courses {
-    position: absolute;
-    left: 55%;
-    width: 17rem;
+    width: 19rem;
+    height: 13rem;
 }
 
 .user-courses ul {
@@ -21,6 +26,20 @@
     padding-left: 0;
 }
 
-.user-courses ul li {
+.user-courses li {
     font-size: 18px;
+    margin-top: 3px;
+    display: flex;
+}
+
+.user-courses li div {
+    background-color: #5488cc;
+    color: #fff;
+    padding: 0 5px;
+    margin-right: 5px;
+    border-radius: 6px;
+}
+
+.user-chart {
+    width: 65%;
 }

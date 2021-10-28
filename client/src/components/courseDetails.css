@@ -1,12 +1,25 @@
-.courseDetails-main {
+.course-details-main {
     width:  70%;
     margin: 1rem 0 0 1rem;
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.completionTime, .fastestTime {
+.completion-time, .fastest-time {
     width: 20rem;
     height: 10rem;
+}
+
+.course-chart {
+    width: 65%;
+}
+
+.completion-time :is(h1,h2)  {
+    font-weight: 400;
+}
+
+.fastest-time :is(h1,h2) {
+    font-weight: 400;
 }
