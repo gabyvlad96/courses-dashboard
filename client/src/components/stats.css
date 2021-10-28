@@ -1,0 +1,29 @@
+.stats-main {
+    width:  100%;
+    height: 37rem;
+    margin: 1rem 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.period-select {
+    width: 25rem;
+    height: 15rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    align-items: center;
+}
+
+.period-select h1 {
+    font-size: 56px;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+}
+
+.courses-length-chart, .courses-popularity-chart {
+    width: 45%;
+    height: 50%;
+}

@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Navigation, UserDetails, CourseDetails } from './components'
+import { Navigation, UserDetails, CourseDetails, Stats } from './components'
+import { baseUrl } from './utils/utils';
 import './App.css';
 
-const BASE_URL = 'http://127.0.0.1:5000';
 
 function App() {
 	const [tab, setTab] = useState(1);
 	const [users, setUsers] = useState(null);
 	const [courses, setCourses] = useState(null);
-	const [userDetails, setUserDetails] = useState(null);
-	const [courseDetails, setCourseDetails] = useState(null);
+	const [userDetails, setUserDetails] = useState({
+		data: null,
+		listIndex: null,
+	});
+	const [courseDetails, setCourseDetails] = useState({
+		data: null,
+		listIndex: null,
+	});
 
  	useEffect(async () => {
         try {
-            const usersResponse = await fetch(`${BASE_URL}/users`);
+            const usersResponse = await fetch(`${baseUrl}/users`);
             if (!usersResponse.ok) throw new Error(`HTTP error! status: ${usersResponse.status}`);
             const users = await usersResponse.json()
 			setUsers(users);
 
-			const coursesResponse = await fetch(`${BASE_URL}/courses`);
+			const coursesResponse = await fetch(`${baseUrl}/courses`);
 			if (!coursesResponse.ok) throw new Error(`HTTP error! status: ${coursesResponse.status}`);
             const courses = await coursesResponse.json()
 			setCourses(courses);
@@ -31,8 +37,12 @@ function App() {
 		setTab(newTab);
 	};
 
-	const fetchDetails = (itemData, itemType) => {
-		itemType === "users" ?  setUserDetails(itemData) : setCourseDetails(itemData);
+	const fetchDetails = (itemData, itemType, index) => {
+		const functionToCall = itemType === "users" ? setUserDetails : setCourseDetails;
+		functionToCall({
+			data: itemData,
+			listIndex: index,
+		})
 	}
 
   return (
@@ -45,14 +55,19 @@ function App() {
 		<div className="main">
 			{tab === 1 && (
 				<div className="main-container">
-					<Navigation dataType="users" data={users} onItemClick={fetchDetails}/>
-					{userDetails && <UserDetails user={userDetails}/>}	
+					<Navigation dataType="users" data={users} selectedItem={userDetails.listIndex} onItemClick={fetchDetails}/>
+					{userDetails.data && <UserDetails user={userDetails.data}/>}	
 				</div>
 			)}
 			{tab === 2 && (
 				<div className="main-container">
-					<Navigation dataType="courses" data={courses} onItemClick={fetchDetails}/>
-					{courseDetails && <CourseDetails course={courseDetails}/>}
+					<Navigation dataType="courses" data={courses} selectedItem={userDetails.listIndex} onItemClick={fetchDetails}/>
+					{courseDetails.data && <CourseDetails course={courseDetails.data}/>}
+				</div>
+			)}
+			{tab === 3 && (
+				<div className="main-container">
+					<Stats />
 				</div>
 			)}
 		</div>
