@@ -46,7 +46,8 @@ I opted for Flask because of its flexibility and easiness to build and deploy th
   - object representing the user who completed the course in the shortest time
   - string of the fastest completion time made by the user at `index-1`
   - list of the number of users that started the course every month. Every index in the list corresponds to a month.
-    This is to calculate the course's popularity. It includes users who started the course twice or more.
+    This is to calculate the course's popularity. It includes users who started the course twice or more. This is an alternative to course completion rate
+    because a completion rate could not be calculated since every certificate has an end date, resulting in 100% completion rate.
 - `stats/timeCompletion` - requires two arguments: `start` and `end`. The endpoint 
   returns the total number of users who completed the course in a given time range defined by the two arguments.
 
