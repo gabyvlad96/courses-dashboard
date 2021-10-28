@@ -25,7 +25,8 @@ const Navigation = (props) => {
 
     useEffect(async () => {
         setDisplayData(props.data);
-    }, [props.data]);
+        setSelectedItem(props.selectedItem)
+    }, [props.data, props.selectedItem]);
 
     const handleSearchFieldChange = (e) => {
         const searchInput = e.target.value;
@@ -45,7 +46,7 @@ const Navigation = (props) => {
 
     const onSelectItem = (value, ItemType, index) => {
         setSelectedItem(index)
-        props.onItemClick(value, ItemType)
+        props.onItemClick(value, ItemType, index)
     }
 
     return (
