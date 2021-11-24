@@ -5,7 +5,6 @@ different courses.
 The information is based on static data stored as JSON files.
 
 ## Usage
-You can go to http://coursesdashboard.aws-gabriel.de/ and see the app live in action.
 
 If you want to run it locally you need to start the server and the web client separately.
 
